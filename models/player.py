@@ -5,3 +5,11 @@ class Player:
         self.birthday = birthday
         self.gender = gender
         self.rank = rank
+
+    def info_player(self):
+        """Show the info of the players, méthode __repr__ ?"""
+        pass
+
+    def update_ranking(self):
+        """"Ranking update by the person in charge"""
+        pass
