@@ -16,3 +16,7 @@ class Tournament:
 
     def add_round_in_tournament(self, round):
         self.rounds_list.append(round)
+
+    def show_tournament_info(self):
+        print("Affichage des infos du tournoi: ")
+        print(vars(self))

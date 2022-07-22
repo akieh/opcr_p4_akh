@@ -3,6 +3,7 @@ from typing import List
 from views.view import View
 from models.player import Player
 from models.tournament import Tournament
+from models.round import Round
 
 
 class Controller:
@@ -28,24 +29,30 @@ class Controller:
             print(vars(player))
 
     def generate_tournament(self):
+        """Création du tournoi et ajout des joueurs dans le tournoi"""
         print("Saisissez les informations du tournoi: ")
         name_tournament, place_tournament, start_date_tournament, end_date_tournament, time_control_tournament, \
         description_tournament = self.view.prompt_for_tournament_info()
         self.tournament = Tournament(name_tournament, place_tournament, start_date_tournament, end_date_tournament,
                                      time_control_tournament, description_tournament)
 
-    def show_tournament_info(self):
-        print("Affichage des infos du tournoi: ")
-        print(vars(self.tournament))
+    def generate_round(self):
 
-    def generate_pair_of_players(self):
         pass
 
     def bracket_list(self):
-        pass
 
-    def upper_bracket(self):
-        pass
+        upper_bracket = []
+        lower_bracket = []
+        for player in self.players:
+            if player.rank <= 4:
+                upper_bracket.append(player)
+            else:
+                lower_bracket.append(player)
+        print("Le upper", upper_bracket)
+        print("Le lower", lower_bracket)
+        return upper_bracket, lower_bracket
 
-    def lower_bracket(self):
-        pass
+    def generate_pair_of_players(self):
+        """Création des paires de joueurs pour un tour"""
+        upper_bracket, lower_bracket = self.bracket_list()

@@ -18,7 +18,7 @@ class View:
         last_name = input("Saisissez le prenom du joueur : ")
         birthday = input("Saisissez la date de naissance du joueur : ")
         gender = input("Saisissez le sexe du joueur : ")
-        rank = input("Saisissez le rang du joueur: ")
+        rank = int(input("Saisissez le rang du joueur: "))
         return first_name, last_name, birthday, gender, rank
 
     """Ici, il faudra faire l'affichage des différents Rapports. Une autre classe View_Rapport ? """

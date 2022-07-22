@@ -8,7 +8,8 @@ def main():
     controller.generate_tournament()
     controller.generate_players()
     controller.show_players()
-    controller.show_tournament_info()
+    controller.tournament.show_tournament_info()
+    controller.bracket_list()
 
 
 if __name__ == '__main__':
