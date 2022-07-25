@@ -1,4 +1,5 @@
 from typing import List
+from operator import attrgetter
 
 from views.view import View
 from models.player import Player
@@ -36,12 +37,14 @@ class Controller:
         self.tournament = Tournament(name_tournament, place_tournament, start_date_tournament, end_date_tournament,
                                      time_control_tournament, description_tournament)
 
-    def generate_round(self):
+    def generate_first_round(self):
+        upper_bracket, lower_bracket = self.bracket_list()
+        """Ce qu'il y a faire : je cr"""
 
+    def generate_round(self):
         pass
 
     def bracket_list(self):
-
         upper_bracket = []
         lower_bracket = []
         for player in self.players:
@@ -49,8 +52,9 @@ class Controller:
                 upper_bracket.append(player)
             else:
                 lower_bracket.append(player)
-        print("Le upper", upper_bracket)
-        print("Le lower", lower_bracket)
+        #Ordonner la liste : le premier est au début de la liste, le dernier à la fin..
+        upper_bracket.sort(key=attrgetter("rank"))
+        lower_bracket.sort(key=attrgetter("rank"))
         return upper_bracket, lower_bracket
 
     def generate_pair_of_players(self):

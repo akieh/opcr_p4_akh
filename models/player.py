@@ -6,6 +6,9 @@ class Player:
         self.gender = gender
         self.rank = rank
 
+    def get_rank(self):
+        return self.rank
+
     def info_player(self):
         """Show the info of the players, méthode __repr__ ?"""
         pass

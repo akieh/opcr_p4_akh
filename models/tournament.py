@@ -6,10 +6,11 @@ class Tournament:
         self.start_date = start_date
         self.end_date = end_date
         self.time_control = time_control
-        self.number_of_rounds = 8
+        self.number_of_rounds = 4
         self.description = description
         self.players_list = []
         self.rounds_list = []
+        self.ranking_players = None
 
     def add_players_in_tournament(self, player):
         self.players_list.append(player)

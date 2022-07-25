@@ -10,7 +10,7 @@ class View:
         time_control_tournament = input("Saisissez le type de contrôle du temps du tournoi: ")
         description_tournament = input("Saisissez la description du tournoi: ")
         return name_tournament, place_tournament, start_date_tournament, end_date_tournament, \
-               time_control_tournament, description_tournament
+            time_control_tournament, description_tournament
 
     def prompt_for_player_info(self):
         """Getting the info of players with prompt"""
@@ -20,5 +20,8 @@ class View:
         gender = input("Saisissez le sexe du joueur : ")
         rank = int(input("Saisissez le rang du joueur: "))
         return first_name, last_name, birthday, gender, rank
+
+    def prompt_for_round(self):
+        pass
 
     """Ici, il faudra faire l'affichage des différents Rapports. Une autre classe View_Rapport ? """
