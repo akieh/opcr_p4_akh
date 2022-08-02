@@ -18,6 +18,18 @@ class Tournament:
     def add_round_in_tournament(self, round):
         self.rounds_list.append(round)
 
+    def general_rank(self):
+        """Cette méthode permet d'afficher le classement des joueurs dans le tournoi.
+        RANG/NOM/PRENOM/POINTS/CLASSEMENT INDIVIDUEL"""
+        pass
+
+    def ranking_tournament(self, player):
+        """Cette méthode permet d'afficher le rang d'un joueur
+        dans le tournoi. A ne pas confondre avec son classement général qui est
+        externe au tournoi.
+        """
+        pass
+
     def show_tournament_info(self):
         print("Affichage des infos du tournoi: ")
         print(vars(self))

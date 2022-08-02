@@ -1,8 +1,10 @@
 from operator import attrgetter
+import time
 
 from models.tournament import Tournament
 from models.player import Player
 from models.round import Round
+
 
 
 tournoi = Tournament("Golden Wind", "Maroc", "01/01/2022", "01/01/2022", "Blitz", "Aucune description, c'est au Maroc ca suffit")
@@ -30,7 +32,7 @@ print(une_list[1])
 print(une_list[0])"""
 
 
-list_joueurs = [player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8]
+"""list_joueurs = [player_1, player_2, player_3, player_4, player_5, player_6, player_7, player_8]
 for player in list_joueurs:
     print(f"Le jouer {player.first_name} est au rang {player.rank}.")
 
@@ -38,9 +40,9 @@ list_joueurs.sort(key=attrgetter('rank'))
 print("Apres le sort: ")
 
 for player in list_joueurs:
-    print(f"Le joueur {player.first_name} est au rang {player.rank}.")
+    print(f"Le joueur {player.first_name} est au rang {player.rank}.")"""
 
-def bracket_list(liste):
+"""def bracket_list(liste):
     upper_bracket = []
     lower_bracket = []
     for player in liste:
@@ -58,5 +60,15 @@ def bracket_list(liste):
         print(f"Le joueur {player.first_name} est au rang {player.rank}.")
 
 print("Utilisation de la fonction BRACKET_LIST()")
-bracket_list(list_joueurs)
+bracket_list(list_joueurs)"""
 
+"""premier_tuple = (["Sidi Naser", "Maroc", 25], ["Agouliz,", "Maroc", 22])
+print("Element de Sidi Naser le score: ", premier_tuple[0][2])
+premier_tuple[0][2] = 28
+print("Changement de Sidi Naser le score: ", premier_tuple[0][2])"""
+
+une_autre_list = [25, 78, "Arrête !", None, None, "Juv"]
+
+for x in une_autre_list:
+    time.sleep(3)
+    print(f"Valeur de x : {x} . Et voici la longueur {len(une_autre_list)}")
