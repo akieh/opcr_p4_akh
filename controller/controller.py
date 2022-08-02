@@ -41,11 +41,7 @@ class Controller:
         self.tournament.add_round_in_tournament(round)
         #METTRE ICI UNE VUE POUR AFFICHER LA LISTE DES MATCHS DU ROUND
         print("Affichage des matchs")
-        for match in round.list_matchs:
-            player_one = match[0][0]
-            player_two = match[1][0]
-            print("Joueur numéro un", player_one.full_name)
-            print("Joueur numéro deux", player_two.full_name)
+        self.view.show_list_matchs(round.list_matchs)
             #ICI JE DOIS FAIRE APPELER LA VUE AVEC LA FONCTION GETTINGRESULTMATCH
             #ET INSERER LES SCORES SAISIES PAR LUTILISATEUR
             #ET ENSUITE JE METS A JOUR LE CLASSEMENT
@@ -67,12 +63,6 @@ class Controller:
         #Ordonner la liste : le premier est au début de la liste, le dernier à la fin..
         upper_bracket.sort(key=attrgetter("rank"))
         lower_bracket.sort(key=attrgetter("rank"))
-        print("TEST : VOICI LE UPPER BRACKET")
-        for player in upper_bracket:
-            print(player.full_name)
-        print("TEST : VOICI LE LOWER BRACKET")
-        for player in lower_bracket:
-            print(player.full_name)
         return upper_bracket, lower_bracket
 
     def generate_pair_of_players(self):

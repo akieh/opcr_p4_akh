@@ -32,7 +32,10 @@ def main():
 
     controller.show_players()
     controller.tournament.show_tournament_info()
-    controller.generate_first_round()
+    beginning_of_tournament = controller.view.start_of_tournament()
+    if beginning_of_tournament:
+        controller.generate_first_round()
+
 
 if __name__ == '__main__':
     main()

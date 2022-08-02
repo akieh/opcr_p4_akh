@@ -21,9 +21,9 @@ class View:
     def start_of_tournament(self):
         """Cette méthode indique à l'utilisateur que le tournoi est prêt à être lancer
         et lui demande d'appuyer sur entrée pour démarrer le tournoi (premier round"""
-        check = input("Le tournoi est prêt à commencer. Appuyez sur la touche 'Entrée' afin de lancer le premier round")
         next_step = False
         while next_step == False:
+            check = input("Le tournoi est prêt à commencer. Appuyez sur la touche 'Entrée' afin de lancer le premier round")
             if check == "":
                 next_step = True
                 return next_step
@@ -52,7 +52,11 @@ class View:
 
     def show_list_matchs(self, list_match):
         print("Voici les rencontres pour ce round : ")
+        number_of_match = 1
         for match in list_match:
-            pass
+            player_one = match[0][0]
+            player_two = match[1][0]
+            print(f"Match n° {number_of_match} sera {player_one.full_name} VS {player_two.full_name}.")
+            number_of_match += 1
 
     """Ici, il faudra faire l'affichage des différents Rapports. Une autre classe View_Rapport ? """
