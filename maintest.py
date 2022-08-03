@@ -32,8 +32,8 @@ def main():
 
     controller.show_players()
     controller.tournament.show_tournament_info()
-    beginning_of_tournament = controller.view.start_of_tournament()
-    if beginning_of_tournament:
+    start_of_tournament = controller.view.start_of_tournament()
+    if start_of_tournament:
         controller.generate_first_round()
 
 

@@ -23,7 +23,8 @@ class View:
         et lui demande d'appuyer sur entrée pour démarrer le tournoi (premier round"""
         next_step = False
         while next_step == False:
-            check = input("Le tournoi est prêt à commencer. Appuyez sur la touche 'Entrée' afin de lancer le premier round")
+            check = input(
+                "Le tournoi est prêt à commencer. Appuyez sur la touche 'Entrée' afin de lancer le premier round")
             if check == "":
                 next_step = True
                 return next_step
@@ -40,17 +41,22 @@ class View:
         rank = int(input("Saisissez le rang du joueur: "))
         return first_name, last_name, birthday, gender, rank
 
-    def prompt_for_first_round(self):
+    def annoucement_first_round(self):
         print("Début du premier round !")
         time.sleep(3)
 
-    def prompt_for_score(self, player_one, player_two):
-        print(f"Le match entre {player_one.full_name} et {player_two.full_name} est terminé.")
-        winner = input(f"Merci de saisir le gagnant. Si c'est {player_one.full_name}, entrez le chiffre 1.\n"
-                       f"Si c'est {player_two.full_name}, entrez le chiffre 2. ")
-        return winner
+    def continue_the_program(self, message):
+        """Cette méthode permet de continuer le programme si l'utilisateur appuie sur ENTREE"""
+        next_step = False
+        while not next_step:
+            check = input(f"{message}, appuyez sur la touche 'Entrée' pour passer à la suite.")
+            if check == "":
+                next_step = True
+                return next_step
+            else:
+                print("Vous avez saisi un texte avant d'appuyer sur entrée.")
 
-    def show_list_matchs(self, list_match):
+    def start_of_first_round(self, list_match):
         print("Voici les rencontres pour ce round : ")
         number_of_match = 1
         for match in list_match:
@@ -58,5 +64,13 @@ class View:
             player_two = match[1][0]
             print(f"Match n° {number_of_match} sera {player_one.full_name} VS {player_two.full_name}.")
             number_of_match += 1
+        message = "Lorsque le round sera terminée"
+        self.continue_the_program(message)
+
+    def prompt_for_score(self, player_one, player_two):
+        print(f"Le match entre {player_one.full_name} et {player_two.full_name} est terminé.")
+        score_player_one = input(f"Merci de saisir le score de {player_one.full_name}.")
+        score_player_two = input(f"Merci de saisir le score de {player_two.full_name}.")
+        return score_player_one, score_player_two
 
     """Ici, il faudra faire l'affichage des différents Rapports. Une autre classe View_Rapport ? """

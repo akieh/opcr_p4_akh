@@ -32,6 +32,7 @@ class Controller:
                                      time_control_tournament, description_tournament)
 
     def generate_first_round(self):
+        self.view.annoucement_first_round()
         upper_bracket, lower_bracket = self.bracket_list()
         round = Round("Round 1", datetime.datetime.now())
         for i in range(len(upper_bracket)):
@@ -41,16 +42,20 @@ class Controller:
         self.tournament.add_round_in_tournament(round)
         #METTRE ICI UNE VUE POUR AFFICHER LA LISTE DES MATCHS DU ROUND
         print("Affichage des matchs")
-        self.view.show_list_matchs(round.list_matchs)
-            #ICI JE DOIS FAIRE APPELER LA VUE AVEC LA FONCTION GETTINGRESULTMATCH
-            #ET INSERER LES SCORES SAISIES PAR LUTILISATEUR
-            #ET ENSUITE JE METS A JOUR LE CLASSEMENT
+        self.view.start_of_first_round(round.list_matchs)
+        #ICI JE DOIS FAIRE APPELER LA VUE AVEC LA FONCTION GETTINGRESULTMATCH
+        for match in round.list_matchs:
+            player_one = match[0][0]
+            player_two = match[1][0]
+            #saisie des indices pour réucpérer les scores
+            match[0][1], match[1][1] = self.view.prompt_for_score(player_one, player_two)
+            #test affichage MATCH
+            print("Affichage du match")
+            print(match)
 
-    def getting_result_match(self, player_one, player_two):
-        winner = self.view.prompt_for_score(player_one, player_two)
-        if winner == 1:
-            pass
-        return winner
+        #ET INSERER LES SCORES SAISIES PAR LUTILISATEUR
+        #ET ENSUITE JE METS A JOUR LE CLASSEMENT
+
 
     def bracket_list(self):
         upper_bracket = []
