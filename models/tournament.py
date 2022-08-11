@@ -22,18 +22,12 @@ class Tournament:
     def has_played(self, player_one, player_two):
         pass
 
-    def update_general_rank(self):
+    def update_tournament_rank(self):
         """Cette méthode permet de MAJ le classement des joueurs dans le tournoi.
         RANG/NOM/PRENOM/POINTS/CLASSEMENT INDIVIDUEL. Elle sera appelé chaque fois
-        que l'utilisateur saisira les scores de chaque match"""
+        que l'utilisateur saisira les scores de chaque match
+        La liste utilisée est celle contenant les joueurs dans le tournoi players_list"""
         self.players_list.sort(key=lambda x: (float(x.points), -int(x.rank)), reverse=True)
-        """index = 1
-        for player in self.players_list:
-            if player.points == self.players_list[index].points \
-                    and player.rank_in_tournament < self.players_list[index].rank_in_tournament:
-                self.players_list.insert(index, self.players_list.pop(index - 1))"""
-        print("Mise à jour du classement du tournoi")
-
         for rank, player in enumerate(self.players_list):
             player.rank_in_tournament = rank + 1
             print(f"{player.full_name} est classé  {str(player.rank_in_tournament)} "
@@ -44,7 +38,7 @@ class Tournament:
         dans le tournoi. A ne pas confondre avec son classement général qui est
         externe au tournoi.
         """
-        pass
+        return self.players_list.index(player)
 
     def show_tournament_info(self):
         print(vars(self))
