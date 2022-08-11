@@ -11,3 +11,5 @@ env
 
 #ignore ALL cache
 *__pycache__
+
+/models/rank_player.py

@@ -6,6 +6,7 @@ from views.view import View
 from models.player import Player
 from models.tournament import Tournament
 from models.round import Round
+from models.rank_player import RankPlayer
 
 
 class Controller:
@@ -13,15 +14,19 @@ class Controller:
     def __init__(self, view=View()):
         self.tournament = None
         self.view = view
+        #Je vois pas l'utilité de cette liste de joueurs.
         self.players: List[Player] = []
-        print(type(self.players))
 
     def generate_players(self):
         for x in range(8):
             first_name, last_name, birthday, gender, rank = self.view.prompt_for_player_info(x+1)
             player = Player(first_name, last_name, birthday, gender, rank)
+            #05/08 le premier 0 correspond au point dans le tournoi et le None son rang dans le tournoi
             self.players.append(player)
+            #07/08 le premier 0 correspond au point dans le tournoi et le None son rang dans le tournoi
+            player.rank_in_tournament = x+1
             self.tournament.add_players_in_tournament(player)
+        self.tournament.update_general_rank()
 
     def generate_tournament(self):
         """Création du tournoi et ajout des joueurs dans le tournoi"""
@@ -43,19 +48,25 @@ class Controller:
         #METTRE ICI UNE VUE POUR AFFICHER LA LISTE DES MATCHS DU ROUND
         print("Affichage des matchs")
         self.view.start_of_first_round(round.list_matchs)
-        #ICI JE DOIS FAIRE APPELER LA VUE AVEC LA FONCTION GETTINGRESULTMATCH
+        self.tournament.end_date = datetime.datetime.now()
+        #ET INSERER LES SCORES SAISIES PAR LUTILISATEUR
         for match in round.list_matchs:
             player_one = match[0][0]
             player_two = match[1][0]
             #saisie des indices pour réucpérer les scores
             match[0][1], match[1][1] = self.view.prompt_for_score(player_one, player_two)
-            #test affichage MATCH
-            print("Affichage du match")
-            print(match)
-
-        #ET INSERER LES SCORES SAISIES PAR LUTILISATEUR
+            if match[0][1] > match[1][1]:
+                player_one.points += 1
+                print(f"Le gagnant est {player_one.full_name} !")
+            elif match[0][1] < match[1][1]:
+                player_two.points += 1
+                print(f"Le gagnant est {player_two.full_name} !")
+            else:
+                player_one.points += 0.5
+                player_two.points += 0.5
+                print("MATCH NUL !")
         #ET ENSUITE JE METS A JOUR LE CLASSEMENT
-
+        self.tournament.update_general_rank()
 
     def bracket_list(self):
         upper_bracket = []

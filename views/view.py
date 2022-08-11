@@ -69,8 +69,8 @@ class View:
 
     def prompt_for_score(self, player_one, player_two):
         print(f"Le match entre {player_one.full_name} et {player_two.full_name} est terminé.")
-        score_player_one = input(f"Merci de saisir le score de {player_one.full_name}.")
-        score_player_two = input(f"Merci de saisir le score de {player_two.full_name}.")
+        score_player_one = float(input(f"Merci de saisir le score de {player_one.full_name}."))
+        score_player_two = float(input(f"Merci de saisir le score de {player_two.full_name}."))
         return score_player_one, score_player_two
 
     """Ici, il faudra faire l'affichage des différents Rapports. Une autre classe View_Rapport ? """

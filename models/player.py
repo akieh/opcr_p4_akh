@@ -6,13 +6,15 @@ class Player:
         self.birthday = birthday
         self.gender = gender
         self.rank = rank
+        """Correspond au point et classement du joueur dans le tournoi
+        Il faudra le changer à l'avenir de sorte à avoir plusieurs
+        objets "points" correspondant aux points d'un joueur
+        dans un tournoi aisni que son rang dans ce tournoi"""
+        self.points = 0
+        self.rank_in_tournament = 0
 
     def get_rank(self):
         return self.rank
-
-    def info_player(self):
-        """Show the info of the players, méthode __repr__ ?"""
-        pass
 
     def update_ranking(self, new_rank):
         """"Ranking update by the person in charge"""
