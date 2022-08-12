@@ -4,32 +4,44 @@ from models.player import Player
 
 exemple_tuple = (["juventus", "55 victoires", "22 défaites"], ["Inter", "3 victoires", "98 défaites"])
 
-print(exemple_tuple[0][2], exemple_tuple[0][1])
-print(exemple_tuple[1][2])
+player_1 = Player("Abdellatif", "Khirdine", "04/06/1996", "M", 3)
+player_2 = Player("Moustapha", "Khirdine", "26/07/1990", "M", 2)
+player_3 = Player("Zakarya", "Khirdine", "06/01/1986", "M", 1)
+player_4 = Player("Saltana", "Khirdine", "07/02/1964", "F", 4)
 
-list_une = [["Juventus", 5], ["Inter", 2], ["Nap-oli", 3]]
-list_deux = []
+match_1 = ([player_1, 25, "nul"], [player_2, 30, "nul", "AH OUAIIIS"])
+match_2 = ([player_1, 30, "toujours nul"], [player_3, "LOUUURD", 23])
 
-player_1 = Player("Abdellatif", "Khirdine", "04/06/1996", "M", 8)
-player_2 = Player("Moustapha", "Khirdine", "07/07/1990", "M", 2)
-player_3 = Player("Zakarya", "Khirdine", "01/01/1986", "M", 1)
-player_4 = Player("El Hachemi", "Khirdine", "01/01/1946", "M", 3)
+list_match = [match_1, match_2]
 
-list_deux.append(player_1)
-list_deux.append(player_2)
-list_deux.append(player_3)
-list_deux.append(player_4)
-"""random.shuffle(list_deux)
+players_in_match =[]
 
-for player in list_deux:
-    count = 0
-    if player == player_1:
-        print(player.full_name, "L'index: ", list_deux[count])
-        player.full_name += "!"
+boucle = 0
+
+for match in list_match:
+    for player in match:
+        players_in_match.append(player[0])
+    if player_1 and player_2 in players_in_match:
+        print("il y est")
+        print(players_in_match[0].full_name)
+        print(players_in_match[1].full_name)
+    players_in_match.clear()
+    print("la boucle: " + str(boucle))
+    boucle += 1
+
+for player in enumerate(players_in_match):
+    print(player[1].full_name)
+
+
+"""for elem in exemple_tuple:
+    if "juventus" in elem:
+        print("Premier Présent Juve")
+    if "Inter" in elem:
+        print("Premier Présent Inter")
+
+for elem in exemple_tuple:
+    if "Inter" and "juventus" in elem:
+        print("Deuxieme les 2 présents")
     else:
-        print(player.full_name, "Il n'y est pas", list_deux[count])
-    count += 1
-
-if player_1 in list_deux:
-    print("present")"""
-
+        print("pas présent")
+"""

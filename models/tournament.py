@@ -20,7 +20,16 @@ class Tournament:
         self.rounds_list.append(round)
 
     def has_played(self, player_one, player_two):
-        pass
+        players_in_match = []
+        for round in self.rounds_list:
+            for match in round:
+                for player in match:
+                    players_in_match.append(player[0])
+                if player_one and player_two in players_in_match:
+                    return True
+        return False
+
+
 
     def update_tournament_rank(self):
         """Cette méthode permet de MAJ le classement des joueurs dans le tournoi.

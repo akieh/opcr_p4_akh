@@ -73,4 +73,9 @@ class View:
         score_player_two = float(input(f"Merci de saisir le score de {player_two.full_name}."))
         return score_player_one, score_player_two
 
+    def show_tournament_rank(self, players_list):
+       """"Permet d'afficher le classement des joueurs
+       dans le tournoi
+       """
+       pass
     """Ici, il faudra faire l'affichage des différents Rapports. Une autre classe View_Rapport ? """
