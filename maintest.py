@@ -30,8 +30,6 @@ def main():
     controller.tournament.add_players_in_tournament(player_7)
     controller.tournament.add_players_in_tournament(player_8)
 
-    controller.tournament.update_general_rank()
-
     #controller.show_players()
     #controller.tournament.show_tournament_info()
     start_of_tournament = controller.view.start_of_tournament()

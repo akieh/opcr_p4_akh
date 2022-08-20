@@ -19,7 +19,14 @@ class Tournament:
     def add_round_in_tournament(self, round):
         self.rounds_list.append(round)
 
-    def has_played(self, player_one, player_two):
+    def has_been_played(self, player_one, player_two):
+        """
+        Retourne True si player_one et player_two ont déjà joué ensemble
+        sinon il retourne False
+        :param player_one:
+        :param player_two:
+        :return: True or False
+        """
         players_in_match = []
         for round in self.rounds_list:
             for match in round:
@@ -27,9 +34,8 @@ class Tournament:
                     players_in_match.append(player[0])
                 if player_one and player_two in players_in_match:
                     return True
+                players_in_match.clear()
         return False
-
-
 
     def update_tournament_rank(self):
         """Cette méthode permet de MAJ le classement des joueurs dans le tournoi.

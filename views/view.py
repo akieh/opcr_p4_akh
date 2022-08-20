@@ -43,7 +43,11 @@ class View:
 
     def annoucement_first_round(self):
         print("Début du premier round !")
-        time.sleep(3)
+        time.sleep(2)
+
+    def annoucement_round(self, number):
+        print(f"Début du Round {number} !")
+        time.sleep(2)
 
     def continue_the_program(self, message):
         """Cette méthode permet de continuer le programme si l'utilisateur appuie sur ENTREE"""
@@ -56,7 +60,7 @@ class View:
             else:
                 print("Vous avez saisi un texte avant d'appuyer sur entrée.")
 
-    def start_of_first_round(self, list_match):
+    def start_round(self, list_match):
         print("Voici les rencontres pour ce round : ")
         number_of_match = 1
         for match in list_match:
@@ -74,8 +78,9 @@ class View:
         return score_player_one, score_player_two
 
     def show_tournament_rank(self, players_list):
-       """"Permet d'afficher le classement des joueurs
+        """"Permet d'afficher le classement des joueurs
        dans le tournoi
        """
-       pass
+        pass
+
     """Ici, il faudra faire l'affichage des différents Rapports. Une autre classe View_Rapport ? """

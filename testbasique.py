@@ -14,9 +14,18 @@ match_2 = ([player_1, 30, "toujours nul"], [player_3, "LOUUURD", 23])
 
 list_match = [match_1, match_2]
 
-players_in_match =[]
+players_in_match = []
 
-boucle = 0
+number = len(players_in_match)
+
+for i in range(10):
+    print("Voici le i: " + str(i))
+    if i == 5:
+        break
+print("Fin boucle")
+
+print(f"La Juventus est nul au niveau de {number}")
+"""boucle = 0
 
 for match in list_match:
     for player in match:
@@ -30,7 +39,7 @@ for match in list_match:
     boucle += 1
 
 for player in enumerate(players_in_match):
-    print(player[1].full_name)
+    print(player[1].full_name)"""
 
 
 """for elem in exemple_tuple:
