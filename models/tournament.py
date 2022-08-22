@@ -23,18 +23,32 @@ class Tournament:
         """
         Retourne True si player_one et player_two ont déjà joué ensemble
         sinon il retourne False
-        :param player_one:
-        :param player_two:
-        :return: True or False
         """
         players_in_match = []
-        for round in self.rounds_list:
-            for match in round:
-                for player in match:
-                    players_in_match.append(player[0])
-                if player_one and player_two in players_in_match:
-                    return True
-                players_in_match.clear()
+        print(f"Nous allons voir si {player_one.full_name} et {player_two.full_name} ont déjà "
+              f" joué ensemble !")
+        matches = []
+        for round_number, round in enumerate(self.rounds_list, start=1):
+            list_player = []
+            for match_number, match in enumerate(round.list_matchs, start=1):
+                for player_number, player in enumerate(match, start=1):
+                    #print(f"Récupération de l'instance {player_number} de joueur du match {match_number} du round {round_number}")
+                    list_player.append(player[0])
+                check = input("appuyez sur la touche 'Entrée' pour passer à la suite.")
+                for player in list_player:
+                    print(f"Joueur du match {match_number} : {player.full_name}")
+                print("Vérification de la présence du joueur P1  match")
+                if player_one in list_player:
+                    print("Vérification de la présence du joueur P2  match")
+                    if player_two in list_player:
+                        print("Le joueur P1 et P2 est dans ce match.")
+                        return True
+                else:
+                    print("Le joueur P1 n'est pas dans ce match.")
+                list_player.clear()
+                check = input("appuyez sur la touche 'Entrée' pour passer à la suite.")
+            print(f"{player_one.full_name} et {player_two.full_name} n'ont jamais joué ensemble !")
+            check = input("appuyez sur la touche 'Entrée' pour passer à la suite.")
         return False
 
     def update_tournament_rank(self):

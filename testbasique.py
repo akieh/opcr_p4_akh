@@ -14,17 +14,39 @@ match_2 = ([player_1, 30, "toujours nul"], [player_3, "LOUUURD", 23])
 
 list_match = [match_1, match_2]
 
-players_in_match = []
+players_in_match = [player_1, player_4]
+
+exist = False
+
+if player_1 and player_3 in players_in_match:
+    exist = True
+print(exist)
 
 number = len(players_in_match)
 
-for i in range(10):
+print(players_in_match)
+
+"""for i in range(10):
     print("Voici le i: " + str(i))
     if i == 5:
         break
 print("Fin boucle")
 
-print(f"La Juventus est nul au niveau de {number}")
+exist = False
+count = 0
+for ele in exemple_tuple:
+    print("voici le ele:" + str(ele))
+    if "22 défaites" in ele:
+        print("PRESENT !")
+        exist = True
+    else:
+        print("TOUJOURS PAS : " + str(count))
+    count += 1
+
+print(f"taille du tuple = {len(exemple_tuple)}")
+
+
+print(f"La Juventus est nul au niveau de {number}")"""
 """boucle = 0
 
 for match in list_match:

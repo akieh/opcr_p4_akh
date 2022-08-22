@@ -68,7 +68,7 @@ class Controller:
         #20/08, la date de fin d'un round doit être saisie auto avant la saisie des scores
         round.end_date = datetime.datetime.now()
         #ET ENSUITE JE METS A JOUR LE CLASSEMENT
-        self.tournament.update_general_rank()
+        self.tournament.update_tournament_rank()
 
     def bracket_list(self):
         upper_bracket = []
@@ -87,15 +87,19 @@ class Controller:
         print("go")
         self.view.annoucement_round(len(self.tournament.rounds_list) + 1)
         round = Round(f"Round {len(self.tournament.rounds_list)+1}", datetime.datetime.now())
-        list_players = self.tournament.players_list
+        list_players = self.tournament.players_list.copy()
         for i in range(4):
             player_one = list_players[0]
-            list_players.pop(player_one)
-            for player in list_players:
-                if not self.tournament.has_been_played(player_one, player):
-                    match = ([player_one, None], [player, None])
+            list_players.remove(player_one)
+            for player_two in list_players:
+                has_played = self.tournament.has_been_played(player_one, player_two)
+                print(f"CONTROLLER: ONT-ILS JOUE ENSEMBLE : {has_played}")
+                if not has_played:
+                    print(f"CONTROLLER: ILS N'ONT JAMAIS JOUER ENSEMBLE: {has_played}")
+                    match = ([player_one, None], [player_two, None])
+                    print(f"Le player_two:{player_two.full_name} et le player_one {player_one.full_name} n'ont jamais joué ensemble ")
                     round.add_matchs_in_round(match)
-                    list_players.pop(player)
+                    list_players.remove(player_two)
                     break
         self.tournament.add_round_in_tournament(round)
         self.view.start_round(round.list_matchs)
@@ -114,7 +118,9 @@ class Controller:
                 player_two.points += 0.5
                 print("MATCH NUL !")
         round.end_date = datetime.datetime.now()
-        self.tournament.update_general_rank()
+        self.tournament.update_tournament_rank()
+        print(f"LONGUEUR DE self.tournament.players_list: {len(self.tournament.players_list)}")
+        check = input("appuyez sur la touche 'Entrée' pour passer à la suite.")
 
     def show_players(self):
         print("Affichage des infos des joueurs: ")

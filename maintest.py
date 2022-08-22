@@ -35,6 +35,9 @@ def main():
     start_of_tournament = controller.view.start_of_tournament()
     if start_of_tournament:
         controller.generate_first_round()
+        while len(controller.tournament.rounds_list) != tournament.Tournament.number_of_rounds:
+            controller.generate_round()
+        print("TOURNOI TERMINE !!!!!!!!!!")
 
 
 if __name__ == '__main__':
