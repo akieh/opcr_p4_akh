@@ -6,6 +6,9 @@ class View:
 
     def game_menu(self):
         print("Bienvenue dans le programme d'Echec !")
+        choice = input("Tapez 1 si vous voulez créer un tournoi \nTapez 2 si vous voulez"
+                       " voir des rapports \n"
+                       "Tapez 3 si vous voulez mettre à jour le classement d'un joueur.")
 
     def prompt_for_tournament_info(self):
         """Getting the info of tournament"""
@@ -17,6 +20,16 @@ class View:
         description_tournament = input("Saisissez la description du tournoi: ")
         return name_tournament, place_tournament, start_date_tournament, end_date_tournament, \
                time_control_tournament, description_tournament
+
+    def prompt_for_player_info(self, number_player):
+        """Getting the info of players with prompt"""
+        print("Merci de saisir les informations du joueur numéro ", number_player)
+        first_name = input("Saisissez le nom du joueur :")
+        last_name = input("Saisissez le prenom du joueur : ")
+        birthday = input("Saisissez la date de naissance du joueur : ")
+        gender = input("Saisissez le sexe du joueur : ")
+        rank = int(input("Saisissez le rang du joueur: "))
+        return first_name, last_name, birthday, gender, rank
 
     def start_of_tournament(self):
         """Cette méthode indique à l'utilisateur que le tournoi est prêt à être lancer
@@ -30,16 +43,6 @@ class View:
                 return next_step
             else:
                 print("Vous avez saisi un texte avant d'appuyer sur entrée.")
-
-    def prompt_for_player_info(self, number_player):
-        """Getting the info of players with prompt"""
-        print("Merci de saisir les informations du joueur numéro ", number_player)
-        first_name = input("Saisissez le nom du joueur :")
-        last_name = input("Saisissez le prenom du joueur : ")
-        birthday = input("Saisissez la date de naissance du joueur : ")
-        gender = input("Saisissez le sexe du joueur : ")
-        rank = int(input("Saisissez le rang du joueur: "))
-        return first_name, last_name, birthday, gender, rank
 
     def annoucement_first_round(self):
         print("Début du premier round !")
@@ -81,6 +84,8 @@ class View:
         """"Permet d'afficher le classement des joueurs
        dans le tournoi
        """
-        pass
+        for player in players_list:
+            print(f"{player.full_name} est classé  {str(player.rank_in_tournament)} "
+                  f"et il a {str(player.points)} points. Son rang général est {player.rank}.")
 
     """Ici, il faudra faire l'affichage des différents Rapports. Une autre classe View_Rapport ? """

@@ -37,7 +37,7 @@ class Controller:
                                      time_control_tournament, description_tournament)
 
     def generate_first_round(self):
-        self.view.annoucement_first_round()
+        self.view.annoucement_round(len(self.tournament.rounds_list) + 1)
         upper_bracket, lower_bracket = self.bracket_list()
         round = Round("Round 1", datetime.datetime.now())
         for i in range(len(upper_bracket)):
@@ -65,10 +65,10 @@ class Controller:
                 player_one.points += 0.5
                 player_two.points += 0.5
                 print("MATCH NUL !")
-        #20/08, la date de fin d'un round doit être saisie auto avant la saisie des scores
         round.end_date = datetime.datetime.now()
         #ET ENSUITE JE METS A JOUR LE CLASSEMENT
         self.tournament.update_tournament_rank()
+        self.view.show_tournament_rank(self.tournament.players_list)
 
     def bracket_list(self):
         upper_bracket = []
@@ -84,7 +84,6 @@ class Controller:
         return upper_bracket, lower_bracket
 
     def generate_round(self):
-        print("go")
         self.view.annoucement_round(len(self.tournament.rounds_list) + 1)
         round = Round(f"Round {len(self.tournament.rounds_list)+1}", datetime.datetime.now())
         list_players = self.tournament.players_list.copy()
@@ -119,10 +118,7 @@ class Controller:
                 print("MATCH NUL !")
         round.end_date = datetime.datetime.now()
         self.tournament.update_tournament_rank()
+        self.view.show_tournament_rank(self.tournament.players_list)
         print(f"LONGUEUR DE self.tournament.players_list: {len(self.tournament.players_list)}")
         check = input("appuyez sur la touche 'Entrée' pour passer à la suite.")
 
-    def show_players(self):
-        print("Affichage des infos des joueurs: ")
-        for player in self.tournament.players_list:
-            print(vars(player))
